@@ -2,21 +2,23 @@
 
 namespace application\core;
 
+use application\core\Request;
 use application\core\View;
+
 
 abstract class Controller {
 
 	public $route;
 	public $view;
 	public $access;
+	public $request;
 
 	public function __construct($route) {
 		$this->route = $route;
+		$this->request = new Request;
 		if (!$this->checkAccess()) {
 			View::errorCode(403);
 		}
-		$this->view = new View($route);
-		$this->model = $this->loadModel($route['controller']);
 	}
 
 	public function loadModel($name) {
@@ -31,7 +33,7 @@ abstract class Controller {
 		if ($this->isAccess('all')) {
 			return true;
 		}
-		elseif (isset($_SESSION['admin']) and $this->isAccess('admin')) {
+		elseif (isset($this->request->session['admin']) and $this->isAccess('admin')) {
 			return true;
 		}
 		return false;

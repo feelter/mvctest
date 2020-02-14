@@ -1,73 +1,37 @@
 <?php
 
 return [
-	// MainController
+	// MainController for Users
 	'' => [
 		'controller' => 'main',
-		'action' => 'page',
+		'action' => '',
+		'redirect' => 'main/tasks',
 	],
-	'main/page/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'page',
-	],
-
-	'main/upbyname' => [
-		'controller' => 'main',
-		'action' => 'upbyname',
-	],
-	'main/upbyname/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'upbyname',
-	],
-	'main/downbyname' => [
-		'controller' => 'main',
-		'action' => 'downbyname',
-	],
-	'main/downbyname/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'downbyname',
-	],
-
-	'main/upbyemail' => [
-		'controller' => 'main',
-		'action' => 'upbyemail',
-	],
-	'main/upbyemail/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'upbyemail',
-	],
-	'main/downbyemail' => [
-		'controller' => 'main',
-		'action' => 'downbyemail',
-	],
-	'main/downbyemail/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'downbyemail',
-	],
-
-	'main/upbystatus' => [
-		'controller' => 'main',
-		'action' => 'upbystatus',
-	],
-	'main/upbystatus/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'upbystatus',
-	],
-	'main/downbystatus' => [
-		'controller' => 'main',
-		'action' => 'downbystatus',
-	],
-	'main/downbystatus/{page:\d+}' => [
-		'controller' => 'main',
-		'action' => 'downbystatus',
-	],
-
 	'add' => [
 		'controller' => 'main',
 		'action' => 'add',
 	],
 
-	// AdminController
+	//tasks pages
+	'main/tasks' => [
+		'controller' => 'main',
+		'action' => 'tasks',
+	],
+	'main/tasks/{page:\d+}' => [
+		'controller' => 'main',
+		'action' => 'tasks',
+	],
+	'main/tasks-{sort:\w+}' => [
+		'controller' => 'main',
+		'action' => 'tasks',
+	],
+	'main/tasks-{sort:\w+}/{page:\d+}' => [
+		'controller' => 'main',
+		'action' => 'tasks',
+	],
+
+
+	// AdminController for Admin
 	'admin/login' => [
 		'controller' => 'admin',
 		'action' => 'login',
@@ -88,6 +52,8 @@ return [
 		'controller' => 'admin',
 		'action' => 'delete',
 	],
+
+	//tasks pages
 	'admin/tasks' => [
 		'controller' => 'admin',
 		'action' => 'tasks',
@@ -96,56 +62,13 @@ return [
 		'controller' => 'admin',
 		'action' => 'tasks',
 	],
-
-	'admin/upbyname' => [
+	'admin/tasks-{sort:\w+}' => [
 		'controller' => 'admin',
-		'action' => 'upbyname',
+		'action' => 'tasks',
 	],
-	'admin/upbyname/{page:\d+}' => [
+	'admin/tasks-{sort:\w+}/{page:\d+}' => [
 		'controller' => 'admin',
-		'action' => 'upbyname',
-	],
-	'admin/downbyname' => [
-		'controller' => 'admin',
-		'action' => 'downbyname',
-	],
-	'admin/downbyname/{page:\d+}' => [
-		'controller' => 'admin',
-		'action' => 'downbyname',
-	],
-
-	'admin/upbyemail' => [
-		'controller' => 'admin',
-		'action' => 'upbyemail',
-	],
-	'admin/upbyemail/{page:\d+}' => [
-		'controller' => 'admin',
-		'action' => 'upbyemail',
-	],
-	'admin/downbyemail' => [
-		'controller' => 'admin',
-		'action' => 'downbyemail',
-	],
-	'admin/downbyemail/{page:\d+}' => [
-		'controller' => 'admin',
-		'action' => 'downbyemail',
-	],
-
-	'admin/upbystatus' => [
-		'controller' => 'admin',
-		'action' => 'upbystatus',
-	],
-	'admin/upbystatus/{page:\d+}' => [
-		'controller' => 'admin',
-		'action' => 'upbystatus',
-	],
-	'admin/downbystatus' => [
-		'controller' => 'admin',
-		'action' => 'downbystatus',
-	],
-	'admin/downbystatus/{page:\d+}' => [
-		'controller' => 'admin',
-		'action' => 'downbystatus',
+		'action' => 'tasks',
 	],
 
 ];

@@ -5,12 +5,6 @@ return [
 		'login',
 	],
 	'admin' => [
-		'upbyname',
-		'downbyname',
-		'upbyemail',
-		'downbyemail',
-		'upbystatus',
-		'downbystatus',
 		'tasks',
 		'add',
 		'edit',

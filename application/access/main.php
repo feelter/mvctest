@@ -2,13 +2,7 @@
 
 return [
 	'all' => [
-		'upbyname',
-		'downbyname',
-		'upbyemail',
-		'downbyemail',
-		'upbystatus',
-		'downbystatus',
-		'page',
+		'tasks',
 		'add',
 	],
 	'admin' => [

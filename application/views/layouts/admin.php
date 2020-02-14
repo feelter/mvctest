@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title><?php echo $title; ?></title>
+	<meta name="robots" content="none"/> 
         <link href="/public/styles/bootstrap.css" rel="stylesheet">
         <link href="/public/styles/admin.css" rel="stylesheet">
         <link href="/public/styles/font-awesome.css" rel="stylesheet">
@@ -50,7 +51,7 @@
             <footer class="sticky-footer">
                 <div class="container">
                     <div class="text-center">
-                        <small>&copy; 2019</small>
+                        <small>&copy; 2020</small>
                     </div>
                 </div>
             </footer>

@@ -2,6 +2,7 @@
 
 namespace application\lib;
 
+
 class Pagination {
     
     private $max = 3;
@@ -31,11 +32,14 @@ class Pagination {
             }
         }
         if (!is_null($links)) {
-            if ($this->current_page > 1) {
-                $links = $this->generateHtml(1, 'Вперед').$links;
+            if ($this->current_page > 3) {
+                $links = $this->generateHtml(1, 'Первая').$links;
             }
-            if ($this->current_page < $this->amount) {
-                $links .= $this->generateHtml($this->amount, 'Назад');
+            if ($this->current_page < 4 && $this->amount>3) {
+                $links .= $this->generateHtml(4, 'Следующая');
+            }
+	    elseif ($this->current_page < $this->amount) {
+                $links .= $this->generateHtml($this->amount, 'Последняя');
             }
         }
         $html .= $links.' </ul></nav>';
@@ -51,7 +55,12 @@ class Pagination {
             $text = $page;
         }
                
-	$href = $this->route['controller'].'/'.$this->route['action'] . '/'.$page;
+	if ($page == 1) $page = '';
+	$sort = '';
+	if (isset($this->route['sort']))
+		$sort = '-'.$this->route['sort'];
+
+	$href = $this->route['controller'].'/'.$this->route['action'].$sort.'/'.$page;
 
         return '<li class="page-item"><a class="page-link" href="/'.$href.'">'.$text.'</a></li>';
     }

@@ -1,11 +1,12 @@
 $(document).ready(function() {
 	$('form').submit(function(event) {
 		var json;
+		var form = this;
 		event.preventDefault();
 		$.ajax({
-			type: $(this).attr('method'),
-			url: $(this).attr('action'),
-			data: new FormData(this),
+			type: $(form).attr('method'),
+			url: $(form).attr('action'),
+			data: new FormData(form),
 			contentType: false,
 			cache: false,
 			processData: false,
@@ -16,16 +17,20 @@ $(document).ready(function() {
                         	},
         	                403: function () {
                 	            alert('Ошибка: доступ запрещен!');
-					window.setTimeout(window.location.href = "/admin/login",1000);
+								window.setTimeout(window.location.href = "/admin/login",1000);
         	                }
 			},
 			success: function(result) {
 				json = jQuery.parseJSON(result);
+
+				if (json.status=='success' && json.url=='')
+					form.reset();
+				alert(json.status + ': ' + json.message);
+
 				if (json.url) {
 					window.location.href = '/' + json.url;
-				} else {
-					alert(json.status + ' - ' + json.message);
-				}
+				} 
+				
 			}, 
 		});
 	});

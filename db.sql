@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `status` tinyint(1) NOT NULL default '0',
   `edit` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

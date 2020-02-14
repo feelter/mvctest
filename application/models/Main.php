@@ -4,27 +4,8 @@ namespace application\models;
 
 use application\core\Model;
 
+
 class Main extends Model {
-
-	public $error;
-
-	public function taskValidate($post) {
-		if (empty($post['name'])) {
-			$this->error = 'Укажите имя';
-			return false;
-		} elseif (empty($post['email'])) {
-			$this->error = 'Укажите емайл';
-			return false;
-		} elseif (filter_var($post['email'], FILTER_VALIDATE_EMAIL) === false) {
-			$this->error = 'Не верный формат емала';
-			return false;
-		} elseif (empty($post['description'])) {
-			$this->error = 'Опишите задачу';
-			return false;
-		}
-
-		return true;
-	}
 
 	public function taskAdd($post) {
 		$params = [

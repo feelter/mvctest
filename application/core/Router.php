@@ -4,10 +4,11 @@ namespace application\core;
 
 use application\core\View;
 
+
 class Router {
 
     protected $routes = [];
-    protected $params = [];
+    protected $params = [];	
     
     public function __construct() {
         $arr = require 'application/config/routes.php';
@@ -44,6 +45,10 @@ class Router {
     public function run(){
         if ($this->match()) {
             $path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
+
+	    if ($this->params['action']=='' && isset($this->params['redirect']))
+		View::errorCode(301,$this->params['redirect']);
+
             if (class_exists($path)) {
                 $action = $this->params['action'].'Action';
                 if (method_exists($path, $action)) {
@@ -59,5 +64,5 @@ class Router {
             View::errorCode(404);
         }
     }
-  
+
 }

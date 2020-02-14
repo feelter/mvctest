@@ -10,23 +10,19 @@
                         <?php else: ?>
                             <table class="table">
                                 <tr>
-                                    <th><a href="/admin/tasks/">ID</a></th>								
-                                    <th>Имя <a href="/admin/tasks-nameasc/"><span class="fa fa-fw fa-search-plus"></span></a> <a href="/admin/tasks-name/"><i class="fa fa-fw fa-search-minus"></i></a> </th>
-                                    <th>Email <a href="/admin/tasks-emailasc/"><span class="fa fa-fw fa-search-plus"></span></a> <a href="/admin/tasks-email/"><i class="fa fa-fw fa-search-minus"></i></a> </th>
+                                    <th><a href="/">ID</a></th>								
+                                    <th>Имя <a href="/main/tasks-nameasc/"><span class="fa fa-fw fa-search-plus"></span></a> <a href="/main/tasks-name/"><i class="fa fa-fw fa-search-minus"></i></a> </th>
+                                    <th>Email <a href="/main/tasks-emailasc/"><span class="fa fa-fw fa-search-plus"></span></a> <a href="/main/tasks-email/"><i class="fa fa-fw fa-search-minus"></i></a> </th>
                                     <th>Текст задачи</th>
-                                    <th>Статус <a href="/admin/tasks-status/"><span class="fa fa-fw fa-search-plus"></span></a> <a href="/admin/tasks-statusasc/"><i class="fa fa-fw fa-search-minus"></i></a> </th>
-                                    <th>Редактировать</th>
-                                    <th>Удалить</th>
+                                    <th>Статус <a href="/main/tasks-status/"><span class="fa fa-fw fa-search-plus"></span></a> <a href="/main/tasks-statusasc/"><i class="fa fa-fw fa-search-minus"></i></a> </th>
                                 </tr>
                                 <?php foreach ($list as $val): ?>
                                     <tr>
-                                        <td><?php echo $val['id']; ?></td>									
+                                        <td><?php echo htmlspecialchars($val['id'], ENT_QUOTES); ?></td>
                                         <td><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></td>
 										<td><?php echo htmlspecialchars($val['email'], ENT_QUOTES); ?></td>
 										<td><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></td>
 										<td><?php if ($val['status']>0) echo 'выполнено<br>'; if ($val['edit']>0) echo 'отредактировано администратором'; ?></td>
-                                        <td><a href="/admin/edit/<?php echo $val['id']; ?>" class="btn btn-primary">Редактировать</a></td>
-                                        <td><a href="/admin/delete/<?php echo $val['id']; ?>" class="btn btn-danger" onclick="return confirm('Подтверждаете удаление?') ? true : false;">Удалить</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
