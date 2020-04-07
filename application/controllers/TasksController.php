@@ -44,9 +44,9 @@ class TasksController extends Controller implements TaskInterface {
 			}
 			$id = $this->model->taskAdd($this->request->post);
 			if (!$id) {
-				$this->view->message('success', 'Ошибка обработки задачи');
+				$this->view->message('error', 'Ошибка обработки задачи');
 			}
-			$this->view->message('success', 'Задача добавлена');
+			$this->view->message('success', 'Задача добавлена', 'main/tasks/');
 		}
 		$this->view->render('Добавить задачу');
 	}

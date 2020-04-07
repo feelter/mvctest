@@ -19,10 +19,17 @@ class AdminController extends TasksController {
 
 	public function loginValidate($post) {
 		$config = require 'application/config/admin.php';
+		
+		if (empty($post['login']) || empty($post['password'])) {
+			$this->error = 'Укажите логин и пароль!';
+			return false;
+		}
+				
 		if ($config['login'] != $post['login'] or $config['password'] != $post['password']) {
 			$this->error = 'Логин или пароль указан неверно!';
 			return false;
 		}
+
 		return true;
 	}
 
@@ -31,7 +38,7 @@ class AdminController extends TasksController {
 			$this->view->redirect('admin/tasks');
 		}
 		if (!empty($this->request->post)) {
-			if (!$this->loginValidate($this->request->$post)) {
+			if (!$this->loginValidate($this->request->post)) {
 				$this->view->message('error', $this->error);
 			}
 			$this->request->session['admin'] = true;

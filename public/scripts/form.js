@@ -17,21 +17,52 @@ $(document).ready(function() {
                         	},
         	                403: function () {
                 	            alert('Ошибка: доступ запрещен!');
-								window.setTimeout(window.location.href = "/admin/login",1000);
+				    window.setTimeout(window.location.href = "/admin/login",1000);
         	                }
 			},
 			success: function(result) {
-				json = jQuery.parseJSON(result);
-
-				if (json.status=='success' && json.url=='')
-					form.reset();
-				alert(json.status + ': ' + json.message);
-
-				if (json.url) {
-					window.location.href = '/' + json.url;
-				} 
+				json = IsJsonString(result);
+				if (!json) {
 				
+					alert('Ошибка обработки данных!');
+				}
+				else
+				{
+					if (json.message!='') {
+						msg_show(json.status, json.message);
+					}
+
+					if (json.status=='success' && json.url=='') {
+						form.reset();
+					}
+
+					if (json.url) {
+						window.location.href = '/' + json.url;
+					} 
+				}
 			}, 
 		});
 	});
 });
+
+function IsJsonString(str) {
+    var json;
+    try {
+        json = JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return json;
+}
+
+function msg_show(valid, msg) {
+    var msgClasses;
+
+    if (valid=='success') {
+       msgClasses = "alert badge-success";
+	window.setTimeout(1000);
+    } else {
+        msgClasses = "alert badge-danger";
+    }
+    $("#msgAlert").removeClass().addClass(msgClasses).text(msg);
+}

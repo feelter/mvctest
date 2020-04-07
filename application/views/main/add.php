@@ -3,16 +3,17 @@
         <div class="card mb-3">
             <div class="card-header"><?php echo $title; ?></div>
             <div class="card-body">
+		<div role="alert" id="msgAlert"></div>
                 <div class="row">
                     <div class="col-sm-4">
                         <form action="/add" method="post">
                             <div class="form-group">
                                 <label>Имя пользователя</label>
-                                <input class="form-control" type="text" name="name">
+                                <input class="form-control" type="text" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="text" name="email">
+                                <input class="form-control" type="text" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label>Текст задачи</label>

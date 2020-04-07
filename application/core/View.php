@@ -13,15 +13,36 @@ class View {
 		$this->path = $route['controller'].'/'.$route['action'];
 	}
 
-	public function render($title, $vars = []) {
-		extract($vars);
+	public function render($title, $vars = []) {		
 		$path = 'application/views/'.$this->path.'.php';
 		if (file_exists($path)) {
+			@extract($this->check($vars));
+
 			ob_start();
 			require $path;
 			$content = ob_get_clean();
+
 			require 'application/views/layouts/'.$this->layout.'.php';
 		}
+	}
+
+	public function check($vars) {
+		if (empty($vars)) return '';
+
+		if(is_array($vars)) {
+			array_walk_recursive($vars, function(&$value, $key) {
+				if ($key!='pagination')
+					$value = $this->html2chars($value);
+			});
+		}
+		else
+			$vars = $this->html2chars($vars);
+
+		return $vars;		
+	}
+
+	public function html2chars($value) {
+		return htmlspecialchars($value, ENT_QUOTES);		  
 	}
 
 	public function redirect($url) {

@@ -20,13 +20,13 @@
                                 </tr>
                                 <?php foreach ($list as $val): ?>
                                     <tr>
-                                        <td><?php echo $val['id']; ?></td>									
-                                        <td><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></td>
-										<td><?php echo htmlspecialchars($val['email'], ENT_QUOTES); ?></td>
-										<td><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></td>
-										<td><?php if ($val['status']>0) echo 'выполнено<br>'; if ($val['edit']>0) echo 'отредактировано администратором'; ?></td>
-                                        <td><a href="/admin/edit/<?php echo $val['id']; ?>" class="btn btn-primary">Редактировать</a></td>
-                                        <td><a href="/admin/delete/<?php echo $val['id']; ?>" class="btn btn-danger" onclick="return confirm('Подтверждаете удаление?') ? true : false;">Удалить</a></td>
+                                        <td><?=$val['id'];?></td>									
+                                        <td><?=$val['name'];?></td>
+					<td><?=$val['email'];?></td>
+					<td><?=$val['description'];?></td>
+					<td><?php if ($val['status']>0) echo 'выполнено<br>'; if ($val['edit']>0) echo 'отредактировано администратором'; ?></td>
+                                        <td><a href="/admin/edit/<?=$val['id'];?>" class="btn btn-primary">Редактировать</a></td>
+                                        <td><a href="/admin/delete/<?=$val['id'];?>" class="btn btn-danger" onclick="return confirm('Подтверждаете удаление?') ? true : false;">Удалить</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </table>

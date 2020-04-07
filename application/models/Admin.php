@@ -8,7 +8,6 @@ use application\models\Main;
 class Admin extends Main {
 
 	public function taskEdit($post, $id) {
-		$post['status'] = isset($post['status']) ? 1 : 0;
 		$params = [
 			'id' => $id,
 			'name' => $post['name'],

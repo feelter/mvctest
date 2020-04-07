@@ -18,11 +18,11 @@
                                 </tr>
                                 <?php foreach ($list as $val): ?>
                                     <tr>
-                                        <td><?php echo htmlspecialchars($val['id'], ENT_QUOTES); ?></td>
-                                        <td><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></td>
-										<td><?php echo htmlspecialchars($val['email'], ENT_QUOTES); ?></td>
-										<td><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></td>
-										<td><?php if ($val['status']>0) echo 'выполнено<br>'; if ($val['edit']>0) echo 'отредактировано администратором'; ?></td>
+                                        <td><?=$val['id'];?></td>
+                                        <td><?=$val['name'];?></td>
+					<td><?=$val['email'];?></td>
+					<td><?=$val['description'];?></td>
+					<td><?php if ($val['status']>0) echo 'выполнено<br>'; if ($val['edit']>0) echo 'отредактировано администратором'; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
